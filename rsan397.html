@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Courses</title>
+		<link rel="stylesheet" type="text/css" href="rsan397.css"/>
+		<script src="rsan397.js"></script>
+
+	</head>
+
+<body>
+   <table style="width: 100%;">
+      	<tr><td id="header"><img src="http://redsox.uoa.auckland.ac.nz/ups/logo.svg" alt="CSLogo" height="30" width="30"> Department of Computer Science</td></tr>
+		<table id="showStatusTab"></table>
+   </table>
+   <hr>
+   <nav>
+      <table style="width: 100%;">
+         <tr>
+            <td id="TabA" class="center" onclick="showTabA();">
+               Home
+            </td>
+            <td id="TabB" class="center" onclick="showTabB();">
+               Courses
+            </td>
+            <td id="TabC" class="center" onclick="showTabC();">
+               Notices
+            </td>
+            <td id="TabD" class="center" onclick="showTabD();">
+               News
+            </td>
+            <td id="TabE" class="center" onclick="showTabE();">
+               People
+            </td>
+            <td id="TabF" class="center" onclick="showTabF();">
+               Guestbook
+            </td>
+			<td id="TabG" class="center" onclick="showTabG();">
+               Register
+            </td>
+			<td id="TabH" class="center" onclick="showTabH();">
+               Software
+            </td>
+			<td id="TabI" class="center" onclick="showTabI();">
+				Login
+            </td>
+         </tr>
+      </table>
+      <hr />
+   </nav>
+
+
+	<div id="SectionA">
+      <section>
+         <h1> Welcome to the Department of Computer Science </h1>
+         <p> Welcome to New Zealand's leading computer science department. We pride ourselves on the excellence of our staff and our students.</p>
+      </section>
+   </div>
+   <div id="SectionB">
+      <section>
+         <p>
+           	<h1>Courses</h1>
+			<table id="showTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionB2">
+      <section>
+         <p>
+           	<h1>Course Timetable</h1>
+			<table id="showClassesTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionC">
+      <section>
+         <p>
+           	<h1>Notices</h1>
+			<table id="showNoticesTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionD">
+      <section>
+         <p>
+           	<h1>News</h1>
+			<table id="showNewsTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionE">
+      <section>
+         <p>
+           	<h1>People</h1>
+			<table id="showPeopleTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionF">
+      <section>
+         <p>
+           	<h1>Guestbook</h1>
+           	<hr>
+           	<form method="post" action="#">
+			<textarea name="comment" id="textArea" placeholder="Enter comment..." rows="5" cols="50"></textarea>
+			<br>
+			<input type="text" id="nameInput" name="names" placeholder="Enter Name...">
+			<br>
+			<button type="button" onclick="getComments()" id="submit">Submit</button>
+			<br>
+			
+			<h3> Recent Entries </h3>
+			<hr>
+			</form>
+		
+			<table id="showGuestTab"></table>
+         </p>
+      </section>
+   </div>
+      <div id="SectionG">
+      <section>
+         <p>
+           	<h1>Register</h1>
+				<form name="Register">
+				<label>Username</label><input type="text" name="username" id="userId"/>
+				<label>Password</label><input type="password" name="password" id="userPassword"/>
+				<label>Address</label><input type="address" name="address" id="userAddress"/>
+				<input type="button" onclick="getRegister()" value="Register"/>
+				</form>
+			<table id="showRegisterTab"></table>
+         </p>
+      </section>
+   </div>
+      <div id="SectionH">
+      <section>
+         <p>
+           	<h1>Available Software</h1>
+				<p>
+					<input type="text" placeholder="Search..." name="search" id="searchValue">
+					<button type="submit" onclick="searchSoftware()">Submit</button>
+				</p>
+			<table id="showSoftwareTab"></table>
+			<table id="showSearchSoftwareTab"></table>
+         </p>
+      </section>
+   </div>
+   <div id="SectionI">
+      <section>
+         <p>
+           	<h1>Please Login</h1>
+				<form name="login">
+				<label>Username</label><input type="text" name="username1" id="userName2"/>
+				<label>Password</label><input type="password" name="password1" id="passWord2"/>
+				<input type="button" onclick="getLogin()" value="Login"/>
+				</form>
+			<table id="showLoginTab"></table>
+         </p>
+      </section>
+   </div>
+
+
+
+
+		<script> 
+			let currentTab = "";
+      		function showTabA() {	
+         		if (currentTab != "TabA") {
+            		currentTab = "TabA";
+            		showNoTabs();
+            		document.getElementById("TabA").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionA").style.display = "inline";
+         		}
+      		}
+
+      		function showTabB() {
+      			getCourses();
+         		if (currentTab != "TabB") {
+            		currentTab = "TabB";
+            		showNoTabs();
+            		document.getElementById("TabB").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionB").style.display = "inline";
+         		}
+      		}
+
+      		function showTabB2() {
+            	document.getElementById("SectionB").style.display = "none";
+            	document.getElementById("SectionB2").style.display = "inline";
+         		
+         		//getTimetables(courseNumber);
+
+      		}
+
+      		function showTabC() {
+      			getNotices();
+         		if (currentTab != "TabC") {
+            		currentTab = "TabC";
+            		showNoTabs();
+            		document.getElementById("TabC").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionC").style.display = "inline";
+         		}
+      		}
+
+      		function showTabD() {
+      			getNews();
+         		if (currentTab != "TabD") {
+            		currentTab = "TabD";
+            		showNoTabs();
+            		document.getElementById("TabD").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionD").style.display = "inline";
+         		}
+      		}
+
+      		function showTabE() {
+      			getPeople();
+         		if (currentTab != "TabE") {
+            		currentTab = "TabE";
+            		showNoTabs();
+            		document.getElementById("TabE").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionE").style.display = "inline";
+         		}
+      		}
+
+      		function showTabF() {
+         		if (currentTab != "TabF") {
+            		currentTab = "TabF";
+            		showNoTabs();
+            		document.getElementById("TabF").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionF").style.display = "inline";
+         		}
+      		}
+			
+			function showTabG() {
+         		if (currentTab != "TabG") {
+            		currentTab = "TabG";
+            		showNoTabs();
+            		document.getElementById("TabG").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionG").style.display = "inline";
+         		}
+      		}
+			
+			function showTabH() {
+				getSoftware();
+         		if (currentTab != "TabH") {
+            		currentTab = "TabH";
+            		showNoTabs();
+            		document.getElementById("TabH").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionH").style.display = "inline";
+         		}
+      		}
+			
+			function showTabI() {
+         		if (currentTab != "TabI") {
+            		currentTab = "TabI";
+            		showNoTabs();
+            		document.getElementById("TabI").style.backgroundColor = "lightBlue";
+            		document.getElementById("SectionI").style.display = "inline";
+         		}
+      		}
+
+      		function showNoTabs() {
+         		document.getElementById("TabA").style.backgroundColor = "lightGray";
+         		document.getElementById("TabB").style.backgroundColor = "lightGray";
+         		document.getElementById("TabC").style.backgroundColor = "lightGray";
+         		document.getElementById("TabD").style.backgroundColor = "lightGray";
+         		document.getElementById("TabE").style.backgroundColor = "lightGray";
+         		document.getElementById("TabF").style.backgroundColor = "lightGray";
+				document.getElementById("TabG").style.backgroundColor = "lightGray";
+				document.getElementById("TabH").style.backgroundColor = "lightGray";
+				document.getElementById("TabI").style.backgroundColor = "lightGray";
+
+         		document.getElementById("SectionA").style.display = "none";
+         		document.getElementById("SectionB").style.display = "none";
+         		document.getElementById("SectionB2").style.display = "none";
+         		document.getElementById("SectionC").style.display = "none";
+         		document.getElementById("SectionD").style.display = "none";
+         		document.getElementById("SectionE").style.display = "none";
+         		document.getElementById("SectionF").style.display = "none";
+				document.getElementById("SectionG").style.display = "none";
+				document.getElementById("SectionH").style.display = "none";
+				document.getElementById("SectionI").style.display = "none";
+      		}
+
+      		window.onload = function () {
+         		showTabA();
+      		}
+
+		</script>
+</body>
+</html>
